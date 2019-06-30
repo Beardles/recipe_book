@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as config from 'config';
 import { AppController } from './app.controller';
 import { IngredientsModule } from './ingredients/ingredients.module';
+import { GraphQLModule } from '@nestjs/graphql';
 import { RecipesModule } from './recipes/recipes.module';
-import * as config from 'config';
 
 @Module({
   imports: [
+    IngredientsModule,
+    RecipesModule,
     GraphQLModule.forRoot({
       debug: config.get('graphql.debug'),
       playground: config.get('graphql.playground'),
@@ -21,8 +22,6 @@ import * as config from 'config';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    IngredientsModule,
-    RecipesModule,
   ],
   controllers: [AppController],
   providers: [],

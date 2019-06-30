@@ -3,19 +3,13 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-"""
-The javascript `Date` as string. Type represents date and time as the ISO Date string.
-"""
-scalar DateTime
-
 type Ingredient {
   id: ID!
   name: String!
   notes: String
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
 
 type Query {
-  getRecipe(id: String!): Ingredient!
+  ingredient(id: String!): Ingredient!
+  ingredients: [Ingredient!]!
 }
