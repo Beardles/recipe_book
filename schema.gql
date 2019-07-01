@@ -3,13 +3,30 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input CreateIngredientDTO {
+  name: String!
+  notes: String
+}
+
 type Ingredient {
   id: ID!
   name: String!
   notes: String
 }
 
+type Mutation {
+  createIngredient(createIngredientDTO: CreateIngredientDTO!): Ingredient!
+  updateIngredient(updateIngredientDTO: UpdateIngredientDTO!): Ingredient!
+  deleteIngredient(id: String!): Ingredient!
+}
+
 type Query {
   ingredient(id: String!): Ingredient!
   ingredients: [Ingredient!]!
+}
+
+input UpdateIngredientDTO {
+  name: String!
+  notes: String
+  id: String!
 }
